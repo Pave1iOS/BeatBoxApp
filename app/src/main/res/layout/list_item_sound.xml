@@ -3,10 +3,13 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:background="@drawable/sound_button_style"
+        android:layout_margin="10dp"
         tools:text="Sound me">
 
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 </layout>

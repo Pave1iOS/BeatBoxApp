@@ -6,7 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beatboxapp.databinding.ListItemSoundBinding
 
-class SoundAdapter(private val layoutInflater: LayoutInflater): RecyclerView.Adapter<SoundHolder>() {
+class SoundAdapter(
+    private val layoutInflater: LayoutInflater,
+    private val sounds: List<Sound>
+): RecyclerView.Adapter<SoundHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoundHolder {
 
@@ -20,7 +23,7 @@ class SoundAdapter(private val layoutInflater: LayoutInflater): RecyclerView.Ada
         return SoundHolder(binding)
     }
 
-    override fun getItemCount(): Int = 0
+    override fun getItemCount(): Int = sounds.size
 
     override fun onBindViewHolder(holder: SoundHolder, position: Int) { }
 

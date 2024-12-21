@@ -11,8 +11,12 @@ import com.example.beatboxapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var beatBox: BeatBox
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        beatBox = BeatBox(assets)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this,
@@ -21,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
-            adapter = SoundAdapter(layoutInflater)
+            adapter = SoundAdapter(layoutInflater, beatBox.sounds)
         }
     }
 
