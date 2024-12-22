@@ -25,6 +25,8 @@ class SoundAdapter(
 
     override fun getItemCount(): Int = sounds.size
 
-    override fun onBindViewHolder(holder: SoundHolder, position: Int) { }
-
+    override fun onBindViewHolder(holder: SoundHolder, position: Int) {
+        val sound = sounds[position]
+        holder.bind(sound)
+    }
 }
