@@ -30,5 +30,6 @@ class SoundViewModelTest {
         subject.onButtonClicked()
 
         verify(beatBox).play(sound)
+
     }
 }
