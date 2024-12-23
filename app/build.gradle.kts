@@ -52,6 +52,9 @@ android {
 dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
 
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
