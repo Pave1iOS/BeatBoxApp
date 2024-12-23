@@ -3,6 +3,7 @@ package com.example.beatboxapp
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
+import java.io.IOException
 
 private const val TAG = "BeatBox"
 private const val SOUND_FOLDER = "sample_sounds"
@@ -35,7 +36,14 @@ class BeatBox(private val assets: AssetManager) {
         soundName.forEach {
             val assetPath = "$SOUND_FOLDER/$it"
             val sound = Sound(assetPath)
-            sounds.add(sound)
+
+            try {
+                load(sound)
+                sounds.add(sound)
+            } catch (ioe: IOException) {
+                Log.e(TAG, "Cound not load sound $it", ioe)
+            }
+
         }
         return sounds
     }
