@@ -48,7 +48,7 @@ class BeatBox(private val assets: AssetManager) {
         return sounds
     }
 
-    fun load(sound: Sound) {
+    private fun load(sound: Sound) {
         val assetsFD = assets.openFd(sound.assetsPath)
         val soundID = soundPool.load(assetsFD, 1)
         sound.soundID = soundID
@@ -65,6 +65,6 @@ class BeatBox(private val assets: AssetManager) {
                 1.0f
                 )
         }
+        Log.d(TAG, "id: ${sound.soundID}")
     }
-
 }
