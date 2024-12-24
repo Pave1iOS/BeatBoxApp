@@ -67,4 +67,8 @@ class BeatBox(private val assets: AssetManager) {
         }
         Log.d(TAG, "id: ${sound.soundID}")
     }
+
+    fun release() {
+        soundPool.release()
+    }
 }
