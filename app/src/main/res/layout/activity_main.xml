@@ -12,7 +12,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="45dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -20,24 +20,39 @@
             app:layout_constraintBottom_toTopOf="@id/play_speed_tv">
         </androidx.recyclerview.widget.RecyclerView>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:src="@drawable/smooth_transition"
+            app:layout_constraintBottom_toTopOf="@id/play_speed_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <TextView
             android:id="@+id/play_speed_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:text="@string/playback_speed_text"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/play_speed_sb"
-            tools:text="Playback is normal"/>
+            tools:text="normal"/>
 
         <SeekBar
             android:id="@+id/play_speed_sb"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_margin="20dp"
+            android:progressDrawable="@drawable/bg_progress_seekbar"
+            android:thumb="@drawable/ic_thumb_seekbar"
             android:progress="1"
             android:max="2"
+            android:layout_marginBottom="40dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
