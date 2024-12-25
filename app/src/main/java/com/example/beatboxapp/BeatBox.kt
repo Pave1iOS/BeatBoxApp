@@ -3,6 +3,11 @@ package com.example.beatboxapp
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import androidx.databinding.BindingAdapter
 import java.io.IOException
 
 private const val TAG = "BeatBox"
@@ -12,6 +17,9 @@ private const val MAX_SOUNDS = 5
 class BeatBox(private val assets: AssetManager) {
 
     val sounds: List<Sound>
+
+    var playbackSpeed = 1
+
     private val soundPool = SoundPool.Builder()
         .setMaxStreams(MAX_SOUNDS) // количество звуков в один момент
         .build()
@@ -62,10 +70,9 @@ class BeatBox(private val assets: AssetManager) {
                 1.0f,
                 1,
                 0,
-                1.0f
+                playbackSpeed.toFloat()
                 )
         }
-        Log.d(TAG, "id: ${sound.soundID}")
     }
 
     fun release() {
