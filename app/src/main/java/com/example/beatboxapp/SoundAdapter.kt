@@ -8,7 +8,6 @@ import com.example.beatboxapp.databinding.ListItemSoundBinding
 
 class SoundAdapter(
     private val layoutInflater: LayoutInflater,
-    private val sounds: List<Sound>,
     private val beatBox: BeatBox
 ): RecyclerView.Adapter<SoundHolder>() {
 
@@ -24,10 +23,10 @@ class SoundAdapter(
         return SoundHolder(binding, beatBox)
     }
 
-    override fun getItemCount(): Int = sounds.size
+    override fun getItemCount(): Int = beatBox.sounds.size
 
     override fun onBindViewHolder(holder: SoundHolder, position: Int) {
-        val sound = sounds[position]
+        val sound = beatBox.sounds[position]
         holder.bind(sound)
     }
 }

@@ -15,14 +15,14 @@ private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
-    private val beatBox by lazy {
-        ViewModelProvider(this)[BeatBox::class.java]
+    private val beatBoxViewModel by lazy {
+        ViewModelProvider(this)[BeatBoxViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        beatBox.initializeAssetsAndLoadSound(assets)
+        beatBoxViewModel.initialize(assets)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this,
@@ -32,17 +32,11 @@ class MainActivity : AppCompatActivity() {
         setupUI(binding)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-//        beatBox.release()
-        Log.d(TAG, "destroy activity")
-    }
-
     private fun setupUI(binding: ActivityMainBinding) {
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
-            adapter = SoundAdapter(layoutInflater, beatBox.sounds, beatBox)
+            adapter = SoundAdapter(layoutInflater, beatBoxViewModel.beatBox)
         }
 
         binding.playSpeedTv.text = getString(
@@ -67,10 +61,10 @@ class MainActivity : AppCompatActivity() {
         seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
 
-                beatBox.playbackSpeed = p1
+                beatBoxViewModel.beatBox.playbackSpeed = p1
                 textView.text = getString(R.string.playback_speed_text, playbackSpeedLevels(p1))
 
-                Log.d(TAG, "progress is: ${beatBox.playbackSpeed}")
+                Log.d(TAG, "progress is: ${beatBoxViewModel.beatBox.playbackSpeed}")
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {}
