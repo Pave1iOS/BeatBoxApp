@@ -3,20 +3,18 @@ package com.example.beatboxapp
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
-import android.widget.SeekBar
-import android.widget.SeekBar.OnSeekBarChangeListener
-import androidx.databinding.BaseObservable
-import androidx.databinding.Bindable
-import androidx.databinding.BindingAdapter
+import androidx.lifecycle.ViewModel
 import java.io.IOException
 
 private const val TAG = "BeatBox"
 private const val SOUND_FOLDER = "sample_sounds"
 private const val MAX_SOUNDS = 5
 
-class BeatBox(private val assets: AssetManager) {
+class BeatBox: ViewModel() {
 
-    val sounds: List<Sound>
+    private lateinit var assets: AssetManager
+
+    lateinit var sounds: List<Sound>
 
     var playbackSpeed = 1
 
@@ -24,7 +22,8 @@ class BeatBox(private val assets: AssetManager) {
         .setMaxStreams(MAX_SOUNDS) // количество звуков в один момент
         .build()
 
-    init {
+    fun initializeAssetsAndLoadSound(assets: AssetManager) {
+        this.assets = assets
         sounds = loadSounds()
     }
 

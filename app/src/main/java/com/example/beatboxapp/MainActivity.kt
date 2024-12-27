@@ -7,6 +7,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.beatboxapp.databinding.ActivityMainBinding
 
@@ -14,12 +15,14 @@ private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var beatBox: BeatBox
+    private val beatBox by lazy {
+        ViewModelProvider(this)[BeatBox::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        beatBox = BeatBox(assets)
+        beatBox.initializeAssetsAndLoadSound(assets)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this,
@@ -31,7 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        beatBox.release()
+//        beatBox.release()
+        Log.d(TAG, "destroy activity")
     }
 
     private fun setupUI(binding: ActivityMainBinding) {
