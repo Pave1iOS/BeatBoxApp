@@ -69,17 +69,7 @@ class MainActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(p0: SeekBar?) {}
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                beatBoxViewModel.beatBox.playLoadSound {
-                    val rootView = findViewById<View>(android.R.id.content)
-
-                    Snackbar.make(
-                        rootView,
-                        getString(R.string.warning_play_sound),
-                        Snackbar.LENGTH_SHORT
-                    )
-                        .setBackgroundTint(R.color.black)
-                        .show()
-                }
+                beatBoxViewModel.beatBox.playLoadSound()
             }
         })
     }

@@ -59,27 +59,33 @@ class BeatBox(private val assets: AssetManager) {
         sound.soundID = soundID
     }
 
-    fun playLoadSound(completion: (() -> Unit)? = null){
+    fun playLoadSound(completion: (() -> Unit)? = null) {
 
         if (soundID == 0) {
-            completion?.invoke()
+            playRandomSound()
         } else {
             val sound = sounds[soundID - 1]
 
-            sound.soundID?.let {
-                soundPool.play(
-                    it,
-                    1.0f,
-                    1.0f,
-                    1,
-                    0,
-                    playbackSpeed.toFloat()
-                )
-            }
+            soundPoolPlay(sound)
         }
     }
 
     fun play(sound: Sound) {
+
+        soundPoolPlay(sound)
+    }
+
+    fun release() {
+        soundPool.release()
+    }
+
+    private fun playRandomSound() {
+        val sound = sounds.random()
+
+        soundPoolPlay(sound)
+    }
+
+    private fun soundPoolPlay(sound: Sound) {
 
         sound.soundID?.let {
             soundID = it
@@ -90,11 +96,7 @@ class BeatBox(private val assets: AssetManager) {
                 1,
                 0,
                 playbackSpeed.toFloat()
-                )
+            )
         }
-    }
-
-    fun release() {
-        soundPool.release()
     }
 }
