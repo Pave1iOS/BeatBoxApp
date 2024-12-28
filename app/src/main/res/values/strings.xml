@@ -5,4 +5,6 @@
     <string name="slow">slow</string>
     <string name="normal">normal</string>
     <string name="fast">fast</string>
+    <string name="play">play</string>
+    <string name="warning_play_sound">play the sound first 🙌</string>
 </resources>

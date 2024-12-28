@@ -1,6 +1,5 @@
 package com.example.beatboxapp
 
-import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
@@ -20,7 +19,6 @@ class SoundViewModel(private val beatBox: BeatBox): BaseObservable() {
 
     fun onButtonClicked() {
         sound?.let {
-            Log.d(TAG, "click sound: ${it.name}")
             beatBox.play(it)
         }
     }

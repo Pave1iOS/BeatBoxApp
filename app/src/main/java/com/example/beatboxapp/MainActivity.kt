@@ -1,7 +1,7 @@
 package com.example.beatboxapp
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.beatboxapp.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "MainActivity"
 
@@ -63,14 +64,23 @@ class MainActivity : AppCompatActivity() {
 
                 beatBoxViewModel.beatBox.playbackSpeed = p1
                 textView.text = getString(R.string.playback_speed_text, playbackSpeedLevels(p1))
-
-                Log.d(TAG, "progress is: ${beatBoxViewModel.beatBox.playbackSpeed}")
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {}
 
-            override fun onStopTrackingTouch(p0: SeekBar?) {}
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+                beatBoxViewModel.beatBox.playLoadSound {
+                    val rootView = findViewById<View>(android.R.id.content)
+
+                    Snackbar.make(
+                        rootView,
+                        getString(R.string.warning_play_sound),
+                        Snackbar.LENGTH_SHORT
+                    )
+                        .setBackgroundTint(R.color.black)
+                        .show()
+                }
+            }
         })
     }
-
 }
