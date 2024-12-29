@@ -11,11 +11,10 @@
     </data>
     
     <androidx.appcompat.widget.AppCompatButton
+        style="@style/BeatBoxButton"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/sound_button_style"
         android:layout_margin="10dp"
-        android:textColor="@color/white"
         android:text="@{viewModel.title}"
         android:onClick="@{() -> viewModel.onButtonClicked()}"
         tools:text="Sound me">
