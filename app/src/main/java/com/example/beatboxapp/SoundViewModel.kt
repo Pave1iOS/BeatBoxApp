@@ -5,7 +5,10 @@ import androidx.databinding.Bindable
 
 private const val TAG = "SoundViewModel"
 
-class SoundViewModel(private val beatBox: BeatBox): BaseObservable() {
+class SoundViewModel(
+    private val beatBox: BeatBox,
+    private val smile: Smile
+): BaseObservable() {
 
     var sound: Sound? = null
         set(value) {
@@ -15,7 +18,7 @@ class SoundViewModel(private val beatBox: BeatBox): BaseObservable() {
 
     @get: Bindable
     val title: String?
-        get() = sound?.name
+        get() = sound?.let { smile.changeDefaultTitleToSmile(it.name) }
 
     fun onButtonClicked() {
         sound?.let {

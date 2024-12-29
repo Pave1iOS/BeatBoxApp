@@ -5,11 +5,12 @@ import com.example.beatboxapp.databinding.ListItemSoundBinding
 
 class SoundHolder(
     private val binding: ListItemSoundBinding,
-    beatBox: BeatBox
+    beatBox: BeatBox,
+    smile: Smile
 ): RecyclerView.ViewHolder(binding.root) {
 
     init {
-        binding.viewModel = SoundViewModel(beatBox)
+        binding.viewModel = SoundViewModel(beatBox, smile)
     }
 
     fun bind(sound: Sound) {
