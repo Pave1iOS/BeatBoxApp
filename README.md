@@ -10,15 +10,6 @@
 
 <b>Список всех технологий можно посмотреть в конце README</b>
 
-
-![final](https://github.com/user-attachments/assets/f98b5bea-9506-4f0d-bcf6-b1de835203a0)
-
-
-![magic_separator](https://github.com/user-attachments/assets/2f281219-364b-4991-985c-c4361ca59185)
-
-![home_scene]()
-
-
 ---
 <p align="center">Скриншоты приложения</p>
 <p align="center">
